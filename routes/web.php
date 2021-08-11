@@ -14,5 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('layout/layout');
+    return view('blog/blog');
+})->name('homepage');
+
+
+Route::get('/blog', function () {
+    return view('blog/blog');
 });
