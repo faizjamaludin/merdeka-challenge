@@ -12,9 +12,9 @@
 <body>
     <section>
         <header>
-           <a href="{{ route('homepage') }}" class="logo">Cyberjaya<span class="dot">.</span></a>
+           <a href="{{ route('index') }}" class="logo">Cyberjaya<span class="dot">.</span></a>
            <ul class="nav">
-               <li><a href="{{ route('homepage') }}" class="active">Blog</a></li>
+               <li><a href="{{ route('index') }}" class="active">Blog</a></li>
                <li><a href="#">About</a></li>
                <li><a href="#">Contact</a></li>
            </ul>

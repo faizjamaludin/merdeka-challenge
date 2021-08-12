@@ -7,24 +7,42 @@ use Illuminate\Support\Facades\Http;
 
 class BlogController extends Controller
 {
+    
     public function index() {
-     
-        $response = Http::get('https://softwareq-merdeka-api.azure-api.net/blog/v1/ById?id=1&softwareq-apim-subscription-key=e0883b2bab8f4119b6b525027773bde5');
-        $response->json();
 
-        $x = 1;
+        $a = 1;
+        $detail = [];
+        $key = 'e0883b2bab8f4119b6b525027773bde5';
 
-        if ($x >= 1 ) {
-            for($i=1;i<$x;$i++){
-                echo($x);
+        do {
+
+            $response = Http::get('https://softwareq-merdeka-api.azure-api.net/blog/v1/ById?id='.$a.'&softwareq-apim-subscription-key='.$key);
+
+            if($response->json() != null) {
+                
+                // $detail->push($response->json());
+                array_push($detail, $response->json());
+
+                $a++;
+            } else {
+                break;
             }
-           dd($x);
-        } else {
-            $x = 0;
-        }
-        
+            
+        } while ($a >= 1);
 
-        dd($detail);
+
+        return view('blog.blog', ['detail' => $detail, 'key' => $key]);
+
+    }
+
+    public function blogPost($id) {
+        
+        $key = 'e0883b2bab8f4119b6b525027773bde5';
+        $response = Http::get('https://softwareq-merdeka-api.azure-api.net/blog/v1/ById?id='.$id.'&softwareq-apim-subscription-key='.$key);
+
+        $detail = $response->json();
+
+        return view('blog.blog-post', ['detail' => $detail]);
 
     }
 }

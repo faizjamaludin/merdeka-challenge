@@ -14,9 +14,6 @@ use App\Http\Controllers\BlogController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('blog/blog');
-// })->name('homepage');
-
 
 Route::get('/', [BlogController::class, 'index'])->name('index');
+Route::get('/blog-post/{id}', [BlogController::class, 'blogPost'])->name('blog.blog-post');
